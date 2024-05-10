@@ -19,16 +19,31 @@ const Body = () => {
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        try {
+            const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
+            if (!data.ok) {
+                throw new Error('Network response was not ok');
+            }
 
-        const json = await data.json();
+            const json = await data.json();
 
-        // console.log(json); - Restaurants
-        //Optional Chaining
-        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    }
+            setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        } catch (error) {
+            // Handle CORS error
+            if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
+                alert('Failed to fetch data due to CORS error. Please use CORS extension to bypass CORS restrictions and access Site: \n' +
+                    '- For Chrome: https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf\n' +
+                    '- For Firefox: https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/\n' +
+                    '- For Edge: https://microsoftedge.microsoft.com/addons/detail/cors-unblock/egnccfnpppnapkakgcbhfojbcdamigoh');
+            } else {
+                // Handle other errors
+                console.error('Error:', error);
+            }
+        }
+    };
+
 
 
     const onlineStatus = useOnlineStatus();

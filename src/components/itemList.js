@@ -26,7 +26,7 @@ const ItemList = ({ items }) => {
                                     ? item.card.info.price / 100
                                     : item.card.info.defaultPrice / 100}</span>
                         </div>
-                        <p className="text-xs text-gray-800">{item.card.info.description}</p>
+                        <p className="text-xs text-gray-800 hidden md:block">{item.card.info.description}</p>
                     </div>
                     {/* <div className="w-3/12 flex flex-col items-center">
                         <img src={CDN_URL + item.card.info.imageId} className="w-20 h-12 rounded-xl mb-0.5"></img>

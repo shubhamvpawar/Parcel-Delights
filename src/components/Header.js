@@ -26,7 +26,7 @@ const Header = () => {
                     {/* <li className="px-4">
                         ᯤ<sup>{onlineStatus ? "🟢" : "🔴"} </sup>
                     </li> */}
-                    <li className="px-4 hover:text-orange-300 font-semibold">
+                    <li className="px-4 hover:text-orange-600 font-semibold">
                         <Link to="/">Home</Link>
                     </li>
                     {/* <li className="px-4 hover:text-orange-300 font-semibold">
@@ -35,10 +35,10 @@ const Header = () => {
                     <li className="px-4 hover:text-orange-300 font-semibold">
                         <Link to="/contact">Contact</Link>
                     </li> */}
-                    <li className="px-4 hover:text-orange-300 font-semibold">
+                    <li className="px-4 hover:text-orange-600 font-semibold">
                         <Link to="/cart">Cart<sup>[{cartItems.length}]</sup></Link>
                     </li>
-                    <button className="pl-4  hover:text-orange-300 font-semibold"
+                    <button className="pl-4  hover:text-orange-600 font-semibold"
                     // onClick={() => {
                     //     btnNameReact === "Login"
                     //         ? setBtnNameReact("Logout")

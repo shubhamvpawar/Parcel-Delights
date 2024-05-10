@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import useRestaurantMenu from '../utils/useRestaurantMenu';
 import RestaurantCategories from './RestaurantCategories';
 import { useState } from 'react';
+import ShimmerResMenu from './ShimmerResMenu';
 
 const RestaurantMenu = () => {
 
@@ -16,7 +17,7 @@ const RestaurantMenu = () => {
 
     const resInfo = useRestaurantMenu(resId);
 
-    const [showIndex, setShowIndex] = useState(null);
+    const [showIndex, setShowIndex] = useState(0);
 
     // useEffect(() => {
     //     fetchMenu();
@@ -29,7 +30,7 @@ const RestaurantMenu = () => {
     //     setResInfo(json.data);
     // };
 
-    if (resInfo === null) return <Shimmer />;
+    if (resInfo === null) return <ShimmerResMenu />;
 
     const { name, cuisines, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
 
@@ -44,7 +45,7 @@ const RestaurantMenu = () => {
     return (
         <div className="text-center">
             <h1 className="font-bold my-6 text-2xl">{name}</h1>
-            <p className="font-bold text-lg">{cuisines.join(", ")}</p>
+            <p className="font-semibold text-lg opacity-80">{cuisines.join(", ")}</p>
             {/* category accordions */}
             {categories.map((category, index) => (
                 // Controlled component
