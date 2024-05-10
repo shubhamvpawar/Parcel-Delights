@@ -47,16 +47,16 @@ const Body = () => {
     //Ternary Operator
     return listOfRestaurants.length === 0 ? <Shimmer /> : (
         <div className="body mx-auto w-9/12">
-            <div className="filter flex">
-                <div className="search px-2 w-1/2">
+            <div className="filter flex flex-col md:flex-row">
+                <div className="search flex px-2 w-full md:w-1/2 mb-2 md:mb-0 md:mr-2">
                     {/* We bind this search text value to the btn we created using useState */}
-                    <input type="search" className="border border-solid border-black rounded-lg focus:px-2"
+                    <input type="search" className="border border-solid border-black rounded-lg focus:px-2 w-3/5 px-2 my-4"
                         value={searchText}
                         onChange={(e) => {
                             setSearchText(e.target.value);
                         }}
                     ></input>
-                    <button className="px-2 my-4 mx-2 rounded-lg font-semibold hover:bg-gray-200 hover:scale-90"
+                    <button className="px-2 my-4 mx-2 rounded-lg font-semibold hover:bg-gray-200 hover:scale-90 w-2/5"
                         onClick={() => {
                             //Filter the restaurant cards and update the UI 
                             //Get Search Text 
@@ -81,8 +81,8 @@ const Body = () => {
                         }}
                     >Top Rated Restaurants&#x1F50E;</button>
                 </div> */}
-                <div className="search  px-2 flex items-center w-1/2 justify-end">
-                    <button className=" rounded-lg px-2 font-semibold hover:bg-gray-200 hover:scale-90"
+                <div className="search  px-2 flex items-center w-full justify-start md:justify-end md:w-1/2">
+                    <button className="rounded-lg px-2 font-semibold hover:bg-gray-200 hover:scale-90"
                         onClick={() => {
                             //Filter Logic for top rated restaurannts
                             const filteredList = listOfRestaurants.filter(

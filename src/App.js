@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
+import Footer from "./components/Footer";
 
 const AppLayout = () => {
     return (
@@ -19,6 +20,7 @@ const AppLayout = () => {
                 <Header />
                 {/* Children routs should be loaded here */}
                 <Outlet />
+                <Footer />
             </div>
         </Provider>
     );

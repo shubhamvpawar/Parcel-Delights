@@ -3,7 +3,7 @@ import React from 'react';
 const Login = () => {
     return (
         <div className="flex justify-center items-center">
-            <div className=" w-1/3 p-8 rounded-lg bg-white">
+            <div className="w-11/12 md:w-1/3 p-8 rounded-lg bg-white">
                 <h2 className="text-2xl mb-4 justify-center text-center">Login</h2>
                 <form>
                     <div className="mb-4">

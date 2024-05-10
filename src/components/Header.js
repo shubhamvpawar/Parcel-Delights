@@ -15,23 +15,23 @@ const Header = () => {
     const cartItems = useSelector((store) => store.cart.items);
 
     return (
-        <div className="flex justify-between bg-white shadow-lg m-2 rounded-lg">
-            <div className="logo-container">
+        <div className="flex justify-between bg-white shadow-lg m-2 rounded-lg flex-col md:flex-row items-center">
+            <div className="logo-container mb-4 md:mb-0">
                 <img
-                    className="w-[100px] justify-between block"
+                    className="w-[100px]"
                     src={LOGO_URL}></img>
             </div>
             <div className="flex items-center">
-                <ul className="flex p-4 m-4 ">
-                    <li className="px-4">
+                <ul className="flex p-4 m-4 space-x-4">
+                    {/* <li className="px-4">
                         ᯤ<sup>{onlineStatus ? "🟢" : "🔴"} </sup>
-                    </li>
+                    </li> */}
                     <li className="px-4 hover:text-orange-300 font-semibold">
                         <Link to="/">Home</Link>
                     </li>
                     {/* <li className="px-4 hover:text-orange-300 font-semibold">
                         <Link to="/about">About</Link>
-                    </li>
+                    </li> 
                     <li className="px-4 hover:text-orange-300 font-semibold">
                         <Link to="/contact">Contact</Link>
                     </li> */}
@@ -46,7 +46,7 @@ const Header = () => {
                     // }}
                     >
                         {/* {btnNameReact} */}
-                        <Link to="/login">Login</Link>
+                        <Link to="/login">Login{onlineStatus ? "🟢" : "🔴"}</Link>
                     </button>
                 </ul>
             </div>
