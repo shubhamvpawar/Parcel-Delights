@@ -14,51 +14,55 @@ import Login from "./components/Login";
 import Footer from "./components/Footer";
 
 const AppLayout = () => {
-    return (
-        <Provider store={appStore}>
-            <div className="app">
-                <Header />
-                {/* Children routs should be loaded here */}
-                <Outlet />
-                <Footer />
-            </div>
-        </Provider>
-    );
+  return (
+    <Provider store={appStore}>
+      <div className="app">
+        <Header />
+        {/* Children routs should be loaded here */}
+        <Outlet />
+        <Footer />
+      </div>
+    </Provider>
+  );
 };
 
 const appRouter = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
         path: "/",
-        element: <AppLayout />,
-        errorElement: <Error />,
-        children: [
-            {
-                path: "/",
-                element: <Body />
-            },
-            {
-                path: "/about",
-                element: <About />
-            },
-            {
-                path: "/contact",
-                element: <Contact />
-            },
-            {
-                path: "/restaurants/:resId",
-                element: <RestaurantMenu />
-            },
-            {
-                path: "/cart",
-                element: <Cart />
-            },
-            {
-                path: "/login",
-                element: <Login />
-            }
-        ]
-    },
-])
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurants/:resId",
+        element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

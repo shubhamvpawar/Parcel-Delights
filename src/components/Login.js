@@ -1,25 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Login = () => {
+    const [isSignInForm, setIsSignInForm] = useState(true);
+
+    const toggleSignInForm = () => {
+        setIsSignInForm(!isSignInForm);
+    };
     return (
+
         <div className="flex justify-center items-center">
+
             <div className="w-11/12 md:w-1/3 p-8 rounded-lg bg-white">
-                <h2 className="text-2xl mb-4 justify-center text-center">Login</h2>
-                <form>
-                    <div className="mb-4">
-                        <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
-                        <input type="text" id="username" name="username" className="mt-1 p-2 border rounded-md w-full" />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-                        <input type="password" id="password" name="password" className="mt-1 p-2 border rounded-md w-full" />
-                    </div>
-                    <div className="flex justify-center">
-                        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Login</button>
-                    </div>
+                <form
+                    onSubmit={(e) => e.preventDefault()}
+                >
+                    <h1 className="text-3xl font-bold py-2">
+                        {isSignInForm ? "Sign In" : "Sign Up"}</h1>
+                    {!isSignInForm && (<input
+                        // ref={name}
+                        type="text"
+                        placeholder="Full Name"
+                        className="p-2 my-2 w-full border border-black rounded-lg"
+                    />
+                    )}
+                    <input
+                        type="text"
+                        placeholder="Email Address"
+                        className="p-2 my-2 w-full border border-black rounded-lg" />
+
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="p-2 my-2 w-full border border-black rounded-lg" />
+                    <button
+                        className="p-2 my-2 bg-green-600 w-full rounded-lg"
+                    >{isSignInForm ? "Sign In" : "Sign Up"}
+                    </button>
+                    <p className="py-2 cursor-pointer"
+                        onClick={toggleSignInForm}
+                    >{isSignInForm ? "New to Parcel Delight? Sign Up Now" : "Already a user? Sign In now"}
+                    </p>
                 </form>
             </div>
-        </div>
+        </div >
     );
 };
 
